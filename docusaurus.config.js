@@ -10,7 +10,7 @@ module.exports = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  favicon: 'img/favicon.ico',
+
 
   i18n: {
     defaultLocale: 'pt-BR',
