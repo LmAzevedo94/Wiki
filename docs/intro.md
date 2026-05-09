@@ -1,3 +1,8 @@
+---
+slug: /
+title: Relatório de Leads
+---
+
 # Relatório de Leads: G4 Sprint de IA
 **Consultor:** Lucas Azevedo
 **Empresas:** Central Farma, Operalog, SP Osteos
