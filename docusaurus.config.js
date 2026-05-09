@@ -1,16 +1,16 @@
-const config = {
+module.exports = {
   title: 'Wiki',
-  tagline: 'Engineering, Resilience and Chaos Engineering',
-  favicon: 'img/favicon.ico',
-
+  tagline: 'Documentação',
   url: 'https://lmazevedo94.github.io',
   baseUrl: '/Wiki/',
 
   organizationName: 'LmAzevedo94',
   projectName: 'Wiki',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+
+  favicon: 'img/favicon.ico',
 
   i18n: {
     defaultLocale: 'pt-BR',
@@ -20,40 +20,22 @@ const config = {
   presets: [
     [
       'classic',
-      ({
+      {
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
-  themeConfig: ({
+  themeConfig: {
     navbar: {
       title: 'Wiki',
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Documentação',
-        },
-        {
-          href: 'https://github.com/LmAzevedo94/Wiki',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
-    },
-
-    footer: {
-      style: 'dark',
-      links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} Lucas Azevedo`,
     },
 
     colorMode: {
@@ -61,7 +43,5 @@ const config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
-  }),
+  },
 };
-
-module.exports = config;
