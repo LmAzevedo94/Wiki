@@ -35,6 +35,7 @@ const sidebarLinks = [
     links: [
       { label: 'Desenvolvimento com IA', to: '/guia-desenvolvimento-ia' },
       { label: 'Refinamento de Ideia com IA', to: '/refinamento-de-ideia' },
+      { label: 'Criando os Agentes', to: '/criando-agentes' },
       { label: 'Guia Claude Code + Supabase', to: '/guia-claude-code' },
     ],
   },

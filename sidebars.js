@@ -2,6 +2,7 @@ module.exports = {
   tutorialSidebar: [
     'guia-desenvolvimento-ia',
     'refinamento-de-ideia',
+    'criando-agentes',
     'guia-claude-code',
     'agentes-especializados',
     'framework-openclaw-multi-agente',
