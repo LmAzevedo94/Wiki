@@ -31,6 +31,12 @@ const phases = [
 
 const sidebarLinks = [
   {
+    category: 'Guias',
+    links: [
+      { label: 'Desenvolvimento com IA', to: '/guia-desenvolvimento-ia' },
+    ],
+  },
+  {
     category: 'Frameworks',
     links: [
       { label: 'Framework OpenClaw Multi-Agente', to: '/framework-openclaw-multi-agente' },
