@@ -1,50 +1,56 @@
+/* ═══════════════════════════════════════════════
+   Homepage — usa variáveis do custom.css
+   Adapta automaticamente light/dark
+   ═══════════════════════════════════════════════ */
+
 /* ── Page layout ── */
 .pageLayout {
   display: flex;
   align-items: flex-start;
-  background: #050816;
+  background: var(--trivia-bg);
   min-height: 100vh;
 }
 
 .main {
   flex: 1;
   min-width: 0;
-  color: #e2e8f0;
+  color: var(--trivia-text);
 }
 
 /* ── Sidebar ── */
 .sidebar {
-  width: 260px;
+  width: 256px;
   flex-shrink: 0;
   position: sticky;
   top: 60px;
   height: calc(100vh - 60px);
   overflow-y: auto;
-  padding: 32px 20px;
-  border-right: 1px solid #1e2d4a;
-  background: #050816;
+  padding: 28px 20px;
+  border-right: 1px solid var(--trivia-border);
+  background: var(--trivia-bg-card);
 }
 
 .sidebarHeading {
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #475569;
-  margin-bottom: 20px;
-  font-weight: 600;
+  color: var(--trivia-text-faint);
+  margin-bottom: 18px;
+  font-weight: 700;
 }
 
 .sidebarGroup {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .sidebarCategory {
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #334155;
-  margin-bottom: 10px;
-  font-weight: 600;
+  color: var(--trivia-text-faint);
+  margin-bottom: 8px;
+  font-weight: 700;
+  padding: 0 10px;
 }
 
 .sidebarList {
@@ -53,63 +59,29 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .sidebarLink {
   display: block;
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--trivia-text-secondary);
   text-decoration: none;
-  padding: 6px 10px;
+  padding: 7px 10px;
   border-radius: 6px;
   line-height: 1.4;
   transition: background 0.15s, color 0.15s;
 }
 
 .sidebarLink:hover {
-  background: #0d1526;
-  color: #FF5C3A;
+  background: var(--trivia-coral-muted);
+  color: var(--trivia-coral);
   text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  .pageLayout {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: static;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #1e2d4a;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: center;
-  }
-
-  .sidebarHeading {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  .sidebarGroup {
-    margin-bottom: 0;
-  }
-
-  .sidebarList {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
 }
 
 /* ── Container ── */
 .container {
-  max-width: 1000px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -118,72 +90,83 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 100px 32px 90px;
+  padding: 100px 32px 88px;
   text-align: center;
+  background: var(--trivia-bg);
 }
 
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #FF5C3A;
-  margin-bottom: 20px;
-  opacity: 0.85;
+  color: var(--trivia-coral);
+  background: var(--trivia-coral-muted);
+  border: 1px solid var(--trivia-coral-border);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  font-weight: 600;
 }
 
 .heroTitle {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.15;
-  color: #f1f5f9;
-  margin-bottom: 24px;
+  line-height: 1.12;
+  color: var(--trivia-text);
+  margin-bottom: 22px;
+  letter-spacing: -0.03em;
 }
 
 .accent {
-  color: #FF5C3A;
+  color: var(--trivia-coral);
 }
 
 .heroSub {
   font-size: 1.1rem;
-  color: #94a3b8;
+  color: var(--trivia-text-muted);
   max-width: 480px;
   margin: 0 auto 40px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .ctaBtn {
   display: inline-block;
-  background: #FF5C3A;
-  color: #050816;
+  background: var(--trivia-coral);
+  color: #FFFFFF;
   font-weight: 700;
-  font-size: 1rem;
-  padding: 14px 32px;
+  font-size: 0.95rem;
+  padding: 13px 30px;
   border-radius: 8px;
   text-decoration: none;
-  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.01em;
+  transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 12px rgba(255, 92, 58, 0.30);
 }
 
 .ctaBtn:hover {
-  opacity: 0.88;
+  opacity: 0.9;
   transform: translateY(-2px);
-  color: #050816;
+  box-shadow: 0 6px 20px rgba(255, 92, 58, 0.40);
+  color: #FFFFFF;
   text-decoration: none;
 }
 
 .ctaMeta {
   font-size: 0.78rem;
-  color: #64748b;
+  color: var(--trivia-text-faint);
   margin-top: 14px;
+  letter-spacing: 0.01em;
 }
 
-/* Glow */
+/* Glow decorativo — sutil em light, mais visível em dark */
 .heroBg {
   position: absolute;
   inset: 0;
@@ -192,48 +175,53 @@
 
 .glow1 {
   position: absolute;
-  top: -120px;
+  top: -140px;
   left: 50%;
   transform: translateX(-50%);
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(255, 92, 58, 0.11) 0%, transparent 70%);
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle, var(--trivia-coral-muted) 0%, transparent 65%);
   border-radius: 50%;
 }
 
 .glow2 {
   position: absolute;
   bottom: -80px;
-  right: -80px;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.09) 0%, transparent 70%);
+  right: -60px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.07) 0%, transparent 70%);
   border-radius: 50%;
 }
 
 /* ── Sections ── */
 .section {
   padding: 88px 0;
+  background: var(--trivia-bg);
 }
 
 .sectionDark {
   padding: 72px 0;
-  background: #080f22;
+  background: var(--trivia-bg-alt);
+  border-top: 1px solid var(--trivia-border);
+  border-bottom: 1px solid var(--trivia-border);
 }
 
 .sectionTitle {
-  font-size: 1.9rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--trivia-text);
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
 }
 
 .sectionSub {
   text-align: center;
-  color: #64748b;
+  color: var(--trivia-text-muted);
   font-size: 1rem;
   margin-bottom: 52px;
+  line-height: 1.6;
 }
 
 /* ── Pillars ── */
@@ -244,56 +232,60 @@
 }
 
 .pillarCard {
-  background: #0d1526;
-  border: 1px solid #1e2d4a;
+  background: var(--trivia-bg-card);
+  border: 1px solid var(--trivia-border);
   border-radius: 12px;
   padding: 32px 24px;
-  transition: border-color 0.2s, transform 0.2s;
+  box-shadow: var(--trivia-card-shadow);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .pillarCard:hover {
-  border-color: #FF5C3A44;
-  transform: translateY(-4px);
+  border-color: var(--trivia-coral-border);
+  transform: translateY(-3px);
+  box-shadow: var(--trivia-card-shadow-hover);
 }
 
 .pillarIcon {
-  font-size: 1.8rem;
-  color: #FF5C3A;
+  font-size: 1.7rem;
+  color: var(--trivia-coral);
   display: block;
   margin-bottom: 14px;
 }
 
 .pillarTitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--trivia-text);
   margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
 .pillarDesc {
-  color: #94a3b8;
-  font-size: 0.93rem;
+  color: var(--trivia-text-muted);
+  font-size: 0.925rem;
   line-height: 1.65;
   margin: 0;
 }
 
 /* ── Differentiator ── */
 .diffBlock {
-  max-width: 720px;
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
 }
 
 .diffQuote {
-  font-size: clamp(1.15rem, 2.3vw, 1.65rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--trivia-text);
   line-height: 1.5;
   margin-bottom: 36px;
+  letter-spacing: -0.01em;
 }
 
 .diffQuote em {
-  color: #FF5C3A;
+  color: var(--trivia-coral);
   font-style: normal;
 }
 
@@ -305,14 +297,14 @@
   flex-direction: column;
   gap: 12px;
   text-align: left;
-  max-width: 520px;
+  max-width: 500px;
 }
 
 .diffList li {
-  padding-left: 20px;
+  padding-left: 22px;
   position: relative;
-  color: #94a3b8;
-  font-size: 0.93rem;
+  color: var(--trivia-text-secondary);
+  font-size: 0.95rem;
   line-height: 1.65;
 }
 
@@ -320,7 +312,8 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: #FF5C3A;
+  color: var(--trivia-coral);
+  font-weight: 700;
 }
 
 /* ── Phases ── */
@@ -331,39 +324,48 @@
 }
 
 .phaseCard {
-  background: #0d1526;
-  border: 1px solid #1e2d4a;
+  background: var(--trivia-bg-card);
+  border: 1px solid var(--trivia-border);
   border-radius: 12px;
   padding: 28px 22px;
+  box-shadow: var(--trivia-card-shadow);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.phaseCard:hover {
+  box-shadow: var(--trivia-card-shadow-hover);
+  border-color: var(--trivia-coral-border);
 }
 
 .phaseNumber {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #FF5C3A14;
+  color: var(--trivia-coral);
+  opacity: 0.12;
   display: block;
   line-height: 1;
   margin-bottom: 8px;
 }
 
 .phaseLabel {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #FF5C3A;
+  color: var(--trivia-coral);
   margin-bottom: 8px;
-  opacity: 0.8;
+  font-weight: 700;
 }
 
 .phaseTitle {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--trivia-text);
   margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
 .phaseDesc {
-  color: #94a3b8;
+  color: var(--trivia-text-muted);
   font-size: 0.88rem;
   line-height: 1.6;
   margin: 0;
@@ -371,21 +373,146 @@
 
 /* ── CTA section ── */
 .ctaSection {
-  padding: 90px 0;
+  padding: 88px 0;
   text-align: center;
-  background: linear-gradient(180deg, #050816 0%, #080f22 100%);
-  border-top: 1px solid #1e2d4a;
+  background: var(--trivia-bg-alt);
+  border-top: 1px solid var(--trivia-border);
 }
 
 .ctaTitle {
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--trivia-text);
   margin-bottom: 14px;
+  letter-spacing: -0.02em;
 }
 
 .ctaSub {
-  color: #64748b;
+  color: var(--trivia-text-muted);
   font-size: 1rem;
   margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile first
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .pageLayout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--trivia-border);
+    padding: 16px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    background: var(--trivia-bg-card);
+    /* Scroll horizontal no mobile */
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebarHeading {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .sidebarGroup {
+    margin-bottom: 0;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .sidebarCategory {
+    display: none; /* No mobile, omite as categorias */
+  }
+
+  .sidebarList {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .sidebarLink {
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    background: var(--trivia-bg-alt);
+    border: 1px solid var(--trivia-border);
+    border-radius: 100px;
+  }
+
+  .sidebarLink:hover {
+    border-color: var(--trivia-coral-border);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 64px 20px 56px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .sectionDark {
+    padding: 52px 0;
+  }
+
+  .ctaSection {
+    padding: 56px 0;
+  }
+
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pillarCard {
+    padding: 24px 20px;
+  }
+
+  .phasesGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .phaseCard {
+    padding: 20px 16px;
+  }
+
+  .diffList {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .phasesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 1.9rem;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
+  }
 }

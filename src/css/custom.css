@@ -1,17 +1,256 @@
+/* ═══════════════════════════════════════════════
+   TRIVIA WIKI — Design System
+   Coral: #FF5C3A  |  Warm editorial palette
+   ═══════════════════════════════════════════════ */
+
+/* ── Light mode (default) ── */
 :root {
+  /* Coral scale */
   --ifm-color-primary: #FF5C3A;
-  --ifm-color-primary-dark: #ff4520;
-  --ifm-color-primary-darker: #ff3912;
-  --ifm-color-primary-darkest: #de2900;
-  --ifm-color-primary-light: #ff7354;
-  --ifm-color-primary-lighter: #ff8062;
-  --ifm-color-primary-lightest: #ffa68e;
-  --ifm-background-color: #050816;
-  --trivia-coral: #FF5C3A;
-  --trivia-coral-glow: rgba(255, 92, 58, 0.15);
+  --ifm-color-primary-dark: #f04a26;
+  --ifm-color-primary-darker: #e5421d;
+  --ifm-color-primary-darkest: #c2320f;
+  --ifm-color-primary-light: #ff7254;
+  --ifm-color-primary-lighter: #ff8066;
+  --ifm-color-primary-lightest: #ffa690;
+
+  /* Trivia semantic tokens — light */
+  --trivia-coral:            #FF5C3A;
+  --trivia-coral-muted:      rgba(255, 92, 58, 0.10);
+  --trivia-coral-border:     rgba(255, 92, 58, 0.25);
+
+  --trivia-bg:               #FAF8F5;
+  --trivia-bg-card:          #FFFFFF;
+  --trivia-bg-alt:           #F2EDE7;
+  --trivia-bg-sunken:        #EDE8E1;
+
+  --trivia-text:             #1C1917;
+  --trivia-text-secondary:   #44403C;
+  --trivia-text-muted:       #78716C;
+  --trivia-text-faint:       #A8A29E;
+
+  --trivia-border:           #E5DFD8;
+  --trivia-border-strong:    #C9BFB5;
+
+  --trivia-card-shadow:      0 1px 3px rgba(28,25,23,0.06),
+                             0 6px 20px rgba(28,25,23,0.05);
+  --trivia-card-shadow-hover:0 4px 12px rgba(28,25,23,0.10),
+                             0 16px 40px rgba(28,25,23,0.08);
+
+  /* Docusaurus overrides */
+  --ifm-background-color:           var(--trivia-bg);
+  --ifm-background-surface-color:   var(--trivia-bg-card);
+  --ifm-font-color-base:            var(--trivia-text);
+  --ifm-font-color-secondary:       var(--trivia-text-secondary);
+  --ifm-heading-color:              var(--trivia-text);
+  --ifm-link-color:                 var(--trivia-coral);
+  --ifm-link-hover-color:           var(--ifm-color-primary-dark);
+
+  --ifm-navbar-background-color:    #FFFFFF;
+  --ifm-navbar-shadow:              0 1px 0 var(--trivia-border);
+  --ifm-footer-background-color:    var(--trivia-bg-alt);
+  --ifm-footer-color:               var(--trivia-text-secondary);
+
+  --ifm-menu-color:                 var(--trivia-text-secondary);
+  --ifm-menu-color-active:          var(--trivia-coral);
+  --ifm-menu-color-background-active: var(--trivia-coral-muted);
+  --ifm-menu-color-background-hover: var(--trivia-bg-alt);
+
+  --ifm-toc-border-color:           var(--trivia-border);
+  --ifm-toc-link-color:             var(--trivia-text-muted);
+  --ifm-hr-border-color:            var(--trivia-border);
+  --ifm-table-border-color:         var(--trivia-border);
+  --ifm-table-head-background:      var(--trivia-bg-alt);
+  --ifm-table-stripe-background:    var(--trivia-bg-alt);
+
+  --ifm-code-background:            var(--trivia-bg-sunken);
+  --ifm-code-color:                 #C0392B;
+  --ifm-pre-background:             var(--trivia-bg-sunken);
+  --ifm-pre-border-radius:          8px;
+
+  --ifm-blockquote-border-color:    var(--trivia-coral);
+  --ifm-blockquote-color:           var(--trivia-text-secondary);
+  --ifm-blockquote-background:      var(--trivia-bg-alt);
+
+  --ifm-tabs-color:                 var(--trivia-text-muted);
+  --ifm-tabs-color-active:          var(--trivia-coral);
+  --ifm-tabs-color-active-border:   var(--trivia-coral);
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 92, 58, 0.07);
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* ── Dark mode ── */
 html[data-theme='dark'] {
-  --ifm-color-primary: #FF5C3A;
-  --ifm-background-color: #050816;
+  --trivia-coral:            #FF6B4A;
+  --trivia-coral-muted:      rgba(255, 107, 74, 0.14);
+  --trivia-coral-border:     rgba(255, 107, 74, 0.30);
+
+  --trivia-bg:               #050816;
+  --trivia-bg-card:          #0D1526;
+  --trivia-bg-alt:           #080F22;
+  --trivia-bg-sunken:        #060A18;
+
+  --trivia-text:             #F1F5F9;
+  --trivia-text-secondary:   #CBD5E1;
+  --trivia-text-muted:       #94A3B8;
+  --trivia-text-faint:       #64748B;
+
+  --trivia-border:           #1E2D4A;
+  --trivia-border-strong:    #2D4170;
+
+  --trivia-card-shadow:      none;
+  --trivia-card-shadow-hover:0 0 0 1px rgba(255,107,74,0.25);
+
+  --ifm-color-primary:       #FF6B4A;
+  --ifm-background-color:    var(--trivia-bg);
+  --ifm-font-color-base:     var(--trivia-text);
+  --ifm-heading-color:       var(--trivia-text);
+  --ifm-link-color:          var(--trivia-coral);
+
+  --ifm-navbar-background-color:  var(--trivia-bg-alt);
+  --ifm-navbar-shadow:            0 1px 0 var(--trivia-border);
+  --ifm-footer-background-color:  var(--trivia-bg-alt);
+
+  --ifm-menu-color:               var(--trivia-text-muted);
+  --ifm-menu-color-active:        var(--trivia-coral);
+  --ifm-menu-color-background-active: var(--trivia-coral-muted);
+  --ifm-menu-color-background-hover:  #0D1526;
+
+  --ifm-code-background:          var(--trivia-bg-sunken);
+  --ifm-code-color:               #FF8B6B;
+  --ifm-pre-background:           var(--trivia-bg-sunken);
+
+  --ifm-blockquote-border-color:  var(--trivia-coral);
+  --ifm-table-head-background:    var(--trivia-bg-alt);
+  --ifm-table-stripe-background:  rgba(255,107,74,0.04);
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 107, 74, 0.10);
+}
+
+/* ─────────────────────────────────────
+   Global refinements
+   ───────────────────────────────────── */
+
+/* Smooth theme transitions */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.1s ease;
+}
+/* Except for things that shouldn't transition */
+img, video, canvas, svg {
+  transition: none;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+/* Links in docs */
+.markdown a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.markdown a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Tables */
+.markdown table {
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+.markdown thead tr {
+  font-weight: 600;
+}
+.markdown td, .markdown th {
+  padding: 10px 14px;
+}
+
+/* Code blocks */
+.prism-code {
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+}
+code {
+  font-size: 0.875em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Blockquote */
+blockquote {
+  background: var(--trivia-bg-alt);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+blockquote p {
+  margin: 0;
+}
+
+/* Sidebar menu */
+.menu__link--active {
+  font-weight: 600;
+}
+.menu__list-item-collapsible:hover {
+  background: var(--trivia-bg-alt) !important;
+}
+
+/* Navbar */
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--trivia-text);
+}
+.navbar__item {
+  font-size: 0.9rem;
+}
+
+/* Search */
+.DocSearch-Button {
+  border-radius: 8px !important;
+}
+
+/* Admonitions */
+.alert {
+  border-radius: 8px;
+  border-left-width: 3px;
+}
+
+/* Pagination */
+.pagination-nav__link {
+  border: 1px solid var(--trivia-border);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.pagination-nav__link:hover {
+  border-color: var(--trivia-coral);
+  box-shadow: 0 0 0 3px var(--trivia-coral-muted);
+}
+
+/* Footer */
+.footer__title {
+  color: var(--trivia-text);
+  font-weight: 700;
+}
+.footer__link-item {
+  color: var(--trivia-text-muted);
+}
+.footer__link-item:hover {
+  color: var(--trivia-coral);
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 996px) {
+  .navbar-sidebar {
+    background: var(--trivia-bg);
+  }
 }
