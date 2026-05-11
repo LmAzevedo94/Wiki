@@ -1,0 +1,23 @@
+{
+  "id": "guia-desenvolvimento-ia",
+  "title": "Guia de Desenvolvimento com IA",
+  "description": "Para quem é este guia: Você tem uma ideia de sistema ou aplicativo e quer usar IA para construí-lo, mesmo sem saber programar. Siga os passos na ordem — cada um prepara o próximo.",
+  "source": "@site/docs/guia-desenvolvimento-ia.md",
+  "sourceDirName": ".",
+  "slug": "/guia-desenvolvimento-ia",
+  "permalink": "/Wiki/guia-desenvolvimento-ia",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "guia-desenvolvimento-ia",
+    "title": "Guia de Desenvolvimento com IA",
+    "sidebar_label": "Guia de Desenvolvimento com IA"
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Refinamento de Ideia com IA",
+    "permalink": "/Wiki/refinamento-de-ideia"
+  }
+}

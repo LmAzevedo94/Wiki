@@ -6,55 +6,90 @@ sidebar_label: "Guia de Desenvolvimento com IA"
 
 # Guia de Desenvolvimento com IA
 
-> **Como usar este guia:** Você não precisa saber programar. Você vai ter uma ideia, preencher alguns documentos (tem modelo para copiar aqui) e a IA vai desenvolver o projeto para você com qualidade profissional. Siga os passos na ordem.
+> **Para quem é este guia:** Você tem uma ideia de sistema ou aplicativo e quer usar IA para construí-lo, mesmo sem saber programar. Siga os passos na ordem — cada um prepara o próximo.
 
 ---
 
-## O que você vai precisar
+## Visão geral: como funciona
 
-Antes de começar, instale:
+```
+Sua ideia → Refinamento com IA → Documentação → Agentes constroem → Seu sistema no ar
+```
 
-- **[Lovable](https://lovable.dev)** — onde você descreve sua ideia e a IA constrói o site/app
-- **[Supabase](https://supabase.com)** — banco de dados gratuito para o seu projeto
-- **[Netlify](https://netlify.com)** — hospedagem gratuita para o site ficar no ar
-- **[GitHub](https://github.com)** — guarda o código do projeto
+O segredo é simples: **quanto mais claro você for no início, melhor a IA entrega no final.**
 
-> Todos têm plano gratuito suficiente para começar.
+A IA não adivinha intenções. Ela executa especificações. Este guia ensina a criar especificações tão claras que a IA vai saber exatamente o que fazer.
+
+---
+
+## As duas formas de desenvolvimento
+
+### Caminho 1 — Lovable (visual, sem terminal)
+
+Você descreve o que quer em linguagem natural e o Lovable constrói a interface visualmente. Ideal para começar, para quem não tem computador configurado, ou para iterações rápidas de design.
+
+**Ferramentas:** Lovable + Supabase + Netlify
+
+**Quando usar:**
+- Primeira vez desenvolvendo com IA
+- Quer ver o resultado rapidamente
+- Projeto com interface simples a moderada
+
+### Caminho 2 — Claude Code (terminal, mais controle)
+
+Você usa o Claude instalado no terminal do computador, com agentes especializados que trabalham em equipe: um programa, outro testa, outro organiza. Mais poderoso para projetos complexos.
+
+**Ferramentas:** Claude Code + 21st.dev + Supabase + Netlify
+
+**Quando usar:**
+- Projeto com lógica complexa
+- Quer rastreabilidade total do que foi feito
+- Vai usar agentes especializados (@dev, @qa, etc.)
+
+> Veja o [Guia Claude Code + Supabase](/guia-claude-code) para o passo a passo completo do Caminho 2.
 
 ---
 
 ## Por que Supabase e Netlify?
 
-| O quê | Por quê usar |
-|---|---|
-| **Supabase** | Banco de dados pronto, login de usuários, regras de segurança — tudo em um lugar. Gratuito para começar. |
-| **Netlify** | Seu site fica no ar em minutos. Atualiza sozinho quando o código muda. Gratuito. |
-| **Lovable** | Você descreve o que quer em português, a IA constrói. Conecta direto com Supabase. |
+| Ferramenta | O que faz | Por que usar |
+|---|---|---|
+| **Supabase** | Banco de dados, login de usuários, APIs, código no servidor | Tudo em um lugar. Segurança embutida. Gratuito para começar. |
+| **Netlify** | Hospedagem do site | Publica automaticamente ao salvar código. Gratuito. |
+| **Lovable** | Interface de desenvolvimento visual | Você descreve em português, a IA constrói. |
+| **Claude Code** | IA no terminal com agentes especializados | Controle total, qualidade de produção. |
 
 ---
 
-## Passo 1 — Defina sua ideia em 3 perguntas
+## Passo 1 — Refine sua ideia com IA
 
-Antes de abrir qualquer ferramenta, responda no papel:
+Antes de abrir qualquer ferramenta de desenvolvimento, passe 30-60 minutos refinando sua ideia com Claude ou ChatGPT. Esse tempo economiza horas de retrabalho.
 
-1. **O que o sistema faz?** (em uma frase)
-   > Exemplo: "Um sistema para minha clínica controlar agendamentos de pacientes."
+> Veja o guia completo: [Refinamento de Ideia com IA](/refinamento-de-ideia)
 
-2. **Quem vai usar?** (tipos de usuário)
-   > Exemplo: "Recepcionista, médico e paciente."
+**Versão rápida — cole este prompt no Claude ou ChatGPT:**
 
-3. **Quais são as 3 telas mais importantes?**
-   > Exemplo: "Agenda do dia, cadastro de paciente, histórico de consultas."
+```
+Vou te descrever uma ideia de sistema. Me ajude a transformar essa ideia 
+em uma especificação clara fazendo perguntas uma de cada vez.
+
+Foque em entender:
+- Quem vai usar o sistema e o que cada tipo de usuário pode fazer
+- Quais dados precisam ser armazenados
+- Quais são as regras de negócio (o que pode e não pode acontecer)
+- O que é obrigatório no lançamento vs o que pode vir depois
+
+Após entender bem, me mostre o resumo e gere o PROJECT_REQUIREMENTS.md 
+usando o modelo padrão.
+
+Minha ideia: [descreva aqui em 2-3 frases]
+```
 
 ---
 
 ## Passo 2 — Preencha o PROJECT_REQUIREMENTS
 
-Este é o documento mais importante. A IA vai ler ele toda vez que você pedir algo novo. Copie o modelo abaixo e preencha com os dados do seu projeto.
-
-:::tip Como usar
-Crie um arquivo chamado `PROJECT_REQUIREMENTS.md` na raiz do seu projeto e cole este conteúdo preenchido.
-:::
+O documento mais importante. A IA lê ele toda vez que você pedir algo novo. Cole o modelo abaixo, preencha com o que o Claude/ChatGPT gerou no passo anterior, e salve como `PROJECT_REQUIREMENTS.md` na raiz do projeto.
 
 ```markdown
 # PROJECT_REQUIREMENTS — [Nome do Projeto]
@@ -67,609 +102,790 @@ Crie um arquivo chamado `PROJECT_REQUIREMENTS.md` na raiz do seu projeto e cole 
 
 ## Stack Técnico
 - Frontend: React + Vite + TypeScript + Tailwind + shadcn/ui
-- Backend: Supabase (PostgreSQL + Edge Functions)
-- Auth: Supabase Auth
+- State: TanStack Query v5
+- Backend: Supabase (PostgreSQL + Edge Functions + Auth)
 - Deploy Frontend: Netlify
 - Deploy Backend: Supabase
 
-## Quem Usa o Sistema (Perfis de Acesso)
+## Perfis de Acesso e Permissões
 
-### [Perfil 1 — ex: Admin]
-- O que pode fazer: [descreva]
-- O que NÃO pode fazer: [descreva]
+### [Perfil 1 — ex: Administrador]
+**Pode:**
+- [listar o que pode fazer]
+
+**Não pode:**
+- [listar restrições]
 
 ### [Perfil 2 — ex: Operador]
-- O que pode fazer: [descreva]
-- O que NÃO pode fazer: [descreva]
+**Pode:**
+- [listar o que pode fazer]
 
-### [Perfil 3 — ex: Cliente/Visitante]
-- O que pode fazer: [descreva]
-- O que NÃO pode fazer: [descreva]
+**Não pode:**
+- [listar restrições]
 
-## Funcionalidades — MVP (Versão 1)
+### [Perfil 3 — ex: Cliente/Usuário Final]
+**Pode:**
+- [listar o que pode fazer]
+
+**Não pode:**
+- [listar restrições]
+
+## Funcionalidades — MVP
 
 ### Módulo: [Nome do Módulo 1]
-- [ ] [Funcionalidade 1]
-- [ ] [Funcionalidade 2]
-- [ ] [Funcionalidade 3]
+- [ ] [Funcionalidade A]
+- [ ] [Funcionalidade B]
+- [ ] [Funcionalidade C]
 
 ### Módulo: [Nome do Módulo 2]
-- [ ] [Funcionalidade 1]
-- [ ] [Funcionalidade 2]
+- [ ] [Funcionalidade A]
+- [ ] [Funcionalidade B]
 
-## Regras de Negócio Importantes
-> Liste as regras que a IA precisa saber para não errar.
+## Regras de Negócio
+> Regras que a IA deve conhecer para não cometer erros de implementação.
 
-- Regra 1: [ex: Um paciente só pode ter uma consulta por dia]
-- Regra 2: [ex: Somente o admin pode excluir registros]
-- Regra 3: [ex: Pagamentos devem ser calculados pelo servidor, nunca pelo browser]
+- **RN01:** [ex: Um cliente só pode ter uma consulta ativa por dia]
+- **RN02:** [ex: Somente admin pode excluir registros permanentemente]
+- **RN03:** [ex: Valores financeiros devem ser calculados no servidor]
+- **RN04:** [ex: Notificação é enviada quando status muda para "aprovado"]
 
 ## Dados que o Sistema Armazena
-> Liste as informações que serão salvas no banco.
 
-| Dado | Sensível? | Quem acessa |
-|------|-----------|-------------|
-| Nome do usuário | Não | Todos autenticados |
-| CPF | Sim | Somente admin |
-| Histórico financeiro | Sim | Admin + financeiro |
+| Dado | Sensível? | Quem acessa | Retenção |
+|------|-----------|-------------|---------|
+| Nome completo | Não | Todos autenticados | Enquanto ativo |
+| CPF | Sim | Somente admin | 5 anos |
+| Histórico financeiro | Sim | Admin + financeiro | 5 anos |
+| [outros dados] | | | |
 
-## Integrações Externas (se houver)
+## Integrações Externas
 - [ ] Nenhuma por enquanto
-- [ ] [Nome da integração] — [o que faz]
+- [ ] [Nome] — [o que faz e como]
 
 ## Questões em Aberto
-> Dúvidas que ainda precisam de resposta antes de implementar.
+> Dúvidas que bloqueiam implementação — resolver antes de começar.
 
-- ?  [dúvida 1]
-- ?  [dúvida 2]
+- ❓ [dúvida 1]
+- ❓ [dúvida 2]
 
-## Histórico de Alterações
-| Data | O que mudou |
-|------|-------------|
-| [data] | Criação do documento |
+## Histórico de Decisões
+| Data | Decisão | Razão |
+|------|---------|-------|
+| [data] | Criação do documento | Início do projeto |
 ```
 
 ---
 
-## Passo 3 — Configure os Agentes Especializados
+## Passo 3 — Configure o AGENTS.md
 
-Agentes são "papéis" que a IA assume para fazer diferentes tipos de trabalho. Copie o arquivo abaixo e salve como `AGENTS.md` na raiz do projeto.
-
-:::tip O que são agentes?
-Pense em agentes como funcionários especializados. O agente `dev` programa. O agente `qa` testa. O agente `sm` organiza as tarefas. Você chama cada um pelo nome quando precisar de algo específico.
-:::
+Este arquivo define como a IA deve se comportar, quais agentes existem e quais padrões seguir. Copie exatamente como está — apenas altere a seção de Perfis de Acesso para coincidir com o seu projeto.
 
 ```markdown
-# AGENTS.md — Instruções para IA
+# AGENTS.md — Protocolos de Desenvolvimento
 
-## Identidade do Projeto
-Leia PROJECT_REQUIREMENTS.md antes de qualquer ação.
-Leia CLAUDE.md para entender regras do projeto.
+## Boot Sequence
+No início de cada sessão, execute esta sequência:
+1. Leia PROJECT_REQUIREMENTS.md — entenda o projeto completo
+2. Leia CLAUDE.md — entenda as configurações específicas
+3. Verifique docs/stories/ — identifique stories ativas
+4. Verifique SECURITY_DEBT.md — identifique vulnerabilidades P0 (crítico)
 
-## Agentes Disponíveis
+Somente após ler estes arquivos, inicie qualquer trabalho.
+
+---
+
+## Agentes e Papéis
 
 ### @dev — Desenvolvedor
-Responsável por implementar código.
-- Sempre propor um Diff Plan antes de implementar
-- Aguardar aprovação antes de começar
-- Máximo 300 linhas por componente
-- Nunca usar `any` no TypeScript
-- Nunca usar `select('*')` no Supabase — especificar campos
+**Autoridade:** Implementar código de acordo com os padrões deste documento.
+**Nunca:** Implementar sem Diff Plan aprovado. Alterar mais do que o planejado.
 
-### @qa — Qualidade
-Responsável por validar o que foi implementado.
-- Verificar cada Critério de Aceite da story
-- Emitir gate: PASS / CONCERNS / FAIL
-- PASS = pode fazer deploy
-- FAIL = @dev deve corrigir antes de qualquer deploy
+**Protocolo obrigatório:**
+1. Apresentar Diff Plan (arquivos criados, modificados, não tocados)
+2. Aguardar aprovação explícita ("sim", "pode ir", "aprovado")
+3. Implementar exatamente o que está no plano
+4. Executar self-review checklist
+5. Passar para @qa
 
-### @sm — Scrum Master
-Responsável por organizar tarefas.
-- Criar stories com contexto, critérios de aceite e especificações
-- Manter backlog atualizado
-- Nunca implementar código
+**Self-review antes de passar para @qa:**
+- [ ] `npm run build` passa sem erros
+- [ ] Zero `any` no TypeScript
+- [ ] Zero `console.log` em produção
+- [ ] Componentes ≤ 300 linhas
+- [ ] TanStack Query para dados remotos (sem useEffect)
+- [ ] `select('campo1, campo2')` — sem `select('*')`
+- [ ] Loading skeleton implementado
+- [ ] Error state com retry implementado
+- [ ] Estado vazio implementado
+- [ ] RLS verificado (se criou tabelas)
+- [ ] PROJECT_REQUIREMENTS.md atualizado se necessário
 
-### @architect — Arquiteto
-Responsável por decisões técnicas.
-- Avaliar impacto de mudanças na arquitetura
-- Registrar decisões em architecture.md
-- Sempre considerar segurança e escalabilidade
-
-### @data-engineer — Banco de Dados
-Responsável por estrutura de dados.
-- Criar migrations do Supabase
-- Configurar RLS em TODAS as tabelas
-- Nunca deixar tabela sem política de segurança
-
-## As 5 Regras Invioláveis
-
-1. **Diff Plan obrigatório** — nunca implementar sem plano aprovado
-2. **RLS em toda tabela** — sem exceção, mesmo tabelas internas
-3. **TanStack Query para dados** — NUNCA useEffect + setState para buscar dados
-4. **3 estados obrigatórios** — loading (skeleton), error (com retry), success
-5. **Documentação é código** — atualizar PROJECT_REQUIREMENTS ao fim de cada mudança
-
-## Padrões de Código
-
-### Estrutura de Pasta
-```
-src/
-├── features/[nome-da-feature]/
-│   ├── api/          → chamadas ao Supabase
-│   ├── components/   → componentes visuais
-│   ├── hooks/        → estado local
-│   ├── types/        → tipos TypeScript
-│   └── utils/        → funções auxiliares
-├── components/ui/    → shadcn/ui (não editar)
-├── components/layout/→ Navbar, Sidebar
-├── hooks/            → hooks compartilhados
-└── lib/              → configurações (supabase.ts, etc)
-```
-
-### Componente Correto
+**Padrão de componente obrigatório:**
 ```typescript
 function MeuComponente() {
-  const { data, isLoading, isError, refetch } = useMeusDados();
-
-  if (isLoading) return <Skeleton />;
-  if (isError) return <Erro onRetry={refetch} />;
-  return <Conteudo data={data} />;
+  const { data, isLoading, isError, refetch } = useMeusDados()
+  if (isLoading) return <Skeleton />
+  if (isError) return <ErroState onRetry={refetch} />
+  if (!data?.length) return <EmptyState />
+  return <Conteudo data={data} />
 }
 ```
 
-### Busca de Dados Correta
+**Padrão de hook de dados obrigatório:**
 ```typescript
-export function useMeusDados() {
+export function useMeusDados(filtros?: Filtros) {
   return useQuery({
-    queryKey: ['meus-dados'],
+    queryKey: ['entidade', filtros],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('tabela')
-        .select('id, campo1, campo2')  // nunca select('*')
-        .order('criado_em');
-      if (error) throw error;
-      return data ?? [];
+        .select('id, campo1, campo2')
+        .order('criado_em', { ascending: false })
+      if (error) throw error
+      return data ?? []
     },
     staleTime: 1000 * 60 * 5,
-  });
+  })
 }
 ```
 
-## Segurança Obrigatória
+---
 
-Em TODA tabela criada no Supabase:
-```sql
-ALTER TABLE nome_tabela ENABLE ROW LEVEL SECURITY;
-ALTER TABLE nome_tabela FORCE ROW LEVEL SECURITY;
+### @qa — Quality Assurance
+**Autoridade:** Liberar ou bloquear deploy de qualquer feature.
+**Nunca:** Emitir PASS sem verificar todos os critérios de aceite.
+
+**Sistema de gate:**
+- **PASS:** Todos os CAs atendidos + código limpo → deploy liberado
+- **CONCERNS:** Funciona mas tem pontos de atenção → @dev revisa
+- **FAIL:** CA não atendido → @dev corrige, @qa re-valida
+
+**Checklist de validação:**
+```markdown
+### Critérios de Aceite
+- CA1: ✅ / ❌ [descrição]
+- CA2: ✅ / ❌ [descrição]
+
+### Código
+- TypeScript sem `any`: ✅ / ❌
+- TanStack Query: ✅ / ❌
+- 3 estados (loading/error/success): ✅ / ❌
+- Componentes ≤ 300 linhas: ✅ / ❌
+
+### Segurança
+- RLS habilitado (se novas tabelas): ✅ / ❌ / N/A
+- Sem segredos no código: ✅ / ❌
+
+### Testes Manuais
+- Caminho normal: ✅ / ❌
+- Com erro de rede: ✅ / ❌
+- Sem dados: ✅ / ❌
+- Em mobile: ✅ / ❌
+
+Gate: PASS / CONCERNS / FAIL
 ```
 
-Nunca colocar chaves secretas no código frontend.
-Nunca calcular valores financeiros no browser — sempre no servidor.
-Sempre validar input com Zod nas Edge Functions.
+---
+
+### @sm — Scrum Master
+**Autoridade:** Criar e gerenciar stories. Nunca escreve código.
+**Nunca:** Estimar tempo, implementar funcionalidades.
+
+**Formato de story:**
+```markdown
+## STORY-[número] — [Título]
+
+**Status:** backlog | pronto | em-progresso | em-review | concluido
+**Módulo:** [nome do módulo]
+**Prioridade:** alta | média | baixa
+
+### Contexto
+[Por que essa feature existe e qual problema resolve]
+
+### Critérios de Aceite
+- CA1: Dado [X], quando [Y], então [Z]
+- CA2: [descreva o comportamento esperado e testável]
+
+### Especificações Técnicas
+[Preenchido pelo @dev no Diff Plan]
+
+### QA
+[Preenchido pelo @qa]
+Gate: PASS / CONCERNS / FAIL
+```
+
+---
+
+### @architect — Arquiteto
+**Autoridade:** Decisões sobre estrutura do código, escolhas de tecnologia.
+**Sempre:** Documentar decisões em ADRs antes de implementar.
+
+**Protocolo de revisão:**
+Antes de features complexas, avaliar:
+- Impacto em módulos existentes
+- Risco de breaking change
+- Alternativas consideradas
+- Decisão final e razão
+
+---
+
+### @data-engineer — Engenheiro de Dados
+**Autoridade:** Schema do banco, migrations, políticas de segurança.
+**Nunca:** Criar tabela sem RLS + FORCE habilitado.
+
+**Template de migration obrigatório:**
+```sql
+CREATE TABLE [tabela] (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  -- campos aqui
+  criado_em timestamptz DEFAULT now() NOT NULL,
+  atualizado_em timestamptz DEFAULT now() NOT NULL
+);
+
+-- OBRIGATÓRIO em toda tabela
+ALTER TABLE [tabela] ENABLE ROW LEVEL SECURITY;
+ALTER TABLE [tabela] FORCE ROW LEVEL SECURITY;
+
+-- Policies por papel
+CREATE POLICY "admin_acesso_total" ON [tabela]
+  FOR ALL TO authenticated
+  USING (auth.jwt() ->> 'user_role' = 'admin');
+
+-- Índices para performance
+CREATE INDEX idx_[tabela]_[campo] ON [tabela]([campo]);
+```
+
+---
+
+## Perfis de Acesso deste Projeto
+
+> [PREENCHER com os perfis do PROJECT_REQUIREMENTS]
+
+| Perfil | user_role | Acesso |
+|--------|-----------|--------|
+| Administrador | admin | Total |
+| [Perfil 2] | [role] | [descrição] |
+
+---
+
+## As 5 Regras Invioláveis
+
+1. **Diff Plan obrigatório** — nenhuma linha de código antes do plano ser aprovado
+2. **RLS em toda tabela** — sem exceção, incluindo tabelas internas
+3. **TanStack Query para dados remotos** — nunca useEffect + setState
+4. **3 estados sempre** — loading (skeleton), error (com retry), success
+5. **Documentação é código** — atualizar PROJECT_REQUIREMENTS ao fim de cada mudança
+
+---
+
+## Padrões de Segurança
+
+### Nunca fazer
+- Calcular valores financeiros no browser
+- Usar `service_role_key` no frontend
+- Confiar em dados enviados pelo body sem validar com Zod
+- Deixar tabela sem RLS
+- Expor detalhes de erro interno ao usuário final
+
+### Sempre fazer
+- Validar JWT via `supabase.auth.getUser()` na Edge Function
+- Verificar papel do usuário antes de operações privilegiadas
+- Buscar valores críticos do banco (não do body da requisição)
+- Configurar CORS para o domínio exato em produção
+
+---
 
 ## Definition of Done
-Antes de considerar qualquer tarefa concluída, verificar:
+
+Uma feature está pronta quando:
 - [ ] Build passa (`npm run build`)
-- [ ] Sem `any` no TypeScript
-- [ ] Sem `console.log` em produção
-- [ ] Loading + Error + Success implementados
-- [ ] RLS verificado (se criou tabelas)
-- [ ] PROJECT_REQUIREMENTS atualizado
-- [ ] Testes manuais: caminho feliz, erro, sem dados
+- [ ] TypeScript: zero `any`, zero `@ts-ignore`
+- [ ] Sem `console.log` esquecido
+- [ ] Componentes ≤ 300 linhas com lógica em hooks
+- [ ] TanStack Query para dados remotos
+- [ ] 3 estados: loading skeleton, error + retry, success
+- [ ] Estado vazio (quando lista pode ser vazia)
+- [ ] RLS + policies configurados (se criou tabelas)
+- [ ] Sem segredos no código frontend
+- [ ] PROJECT_REQUIREMENTS.md atualizado
+- [ ] @qa emitiu gate PASS
 ```
 
 ---
 
 ## Passo 4 — Configure o CLAUDE.md
 
-Este arquivo diz para a IA como ela deve se comportar neste projeto específico. Salve como `CLAUDE.md` na raiz do projeto.
+Arquivo lido automaticamente pelo Claude Code a cada sessão. Dá contexto específico do projeto.
 
 ```markdown
-# CLAUDE.md — Configuração do Projeto para IA
+# CLAUDE.md — Instruções do Projeto
 
-## Visão Geral
-Leia PROJECT_REQUIREMENTS.md para entender o projeto completo.
-Leia AGENTS.md para entender os padrões de código e segurança.
+## Identidade
+Projeto: [Nome do Projeto]
+Empresa: [Nome]
+Fase: MVP
 
-## Stack
-- React 18 + Vite + TypeScript (strict: true, zero `any`)
-- TanStack Query v5 para dados remotos
-- Supabase (PostgreSQL + Auth + Edge Functions)
-- Tailwind CSS + shadcn/ui
+## Documentos Essenciais
+Antes de qualquer ação, leia:
+- PROJECT_REQUIREMENTS.md — fonte de verdade funcional
+- AGENTS.md — padrões de código e protocolos dos agentes
+
+## Stack Completa
+- React 18 + Vite + TypeScript (`"strict": true` no tsconfig)
+- TanStack Query v5 — único padrão para dados remotos
+- Supabase — PostgreSQL + Auth + Edge Functions (Deno/TypeScript)
+- Tailwind CSS + shadcn/ui — componentes de UI
+- React Router v6 — roteamento
+- React Hook Form + Zod — formulários e validação
 - Deploy: Netlify (frontend) + Supabase (backend)
 
-## Perfis de Usuário
-[Cole aqui os perfis do PROJECT_REQUIREMENTS]
-- admin: acesso total
-- [outros perfis]: [permissões]
+## Perfis e Permissões
+> [Copie os perfis do PROJECT_REQUIREMENTS]
+
+| Perfil | user_role | Descrição |
+|--------|-----------|-----------|
+| Administrador | admin | Acesso total |
+| [Perfil 2] | [role] | [descrição] |
+
+Os papéis são definidos em `auth.users.user_metadata.user_role` no Supabase.
+
+## Estrutura de Código
+```
+src/
+├── features/[nome]/          ← módulo por funcionalidade
+│   ├── api/                  ← hooks TanStack Query
+│   ├── components/           ← componentes (≤300 linhas cada)
+│   ├── hooks/                ← estado local e formulários
+│   ├── types/                ← interfaces TypeScript
+│   └── utils/                ← funções puras (com testes)
+├── components/
+│   ├── ui/                   ← shadcn/ui (nunca editar manualmente)
+│   └── layout/               ← Navbar, Sidebar, PageWrapper
+├── hooks/                    ← hooks compartilhados entre features
+├── lib/                      ← supabase.ts, query-client.ts
+└── config/env.ts             ← variáveis de ambiente tipadas
+```
+
+**Regra absoluta:** features nunca importam entre si. Lógica compartilhada vai para `hooks/` ou `lib/`.
 
 ## Variáveis de Ambiente
-```
-VITE_SUPABASE_URL=sua-url-aqui
-VITE_SUPABASE_ANON_KEY=sua-chave-aqui
+```bash
+# .env.local (nunca commitar)
+VITE_SUPABASE_URL=https://xxxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGci...
+
+# Edge Functions (configurar via supabase secrets set)
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGci... # nunca no frontend
 ```
 
-## Comandos Importantes
+## Comandos do Projeto
 ```bash
-npm run dev          # Desenvolvimento local
-npm run build        # Build de produção
-npm test             # Testes
-supabase db push     # Aplicar migrations no banco
-supabase functions deploy [nome]  # Publicar Edge Function
+npm run dev              # desenvolvimento local
+npm run build            # build de produção (sempre testar antes de push)
+npm run test             # testes
+npx tsc --noEmit         # verificar TypeScript sem build
+supabase db diff         # ver diferenças do banco antes de aplicar
+supabase db push         # aplicar migrations (FAZER BACKUP ANTES)
+supabase functions deploy [nome]  # publicar Edge Function
 ```
 
 ## Deploy
-- Frontend: automático via Netlify ao fazer push na branch main
-- Banco: `supabase db push` (SEMPRE fazer backup antes)
-- Edge Functions: `supabase functions deploy`
+- **Frontend:** automático via Netlify ao fazer push na branch `main`
+- **Banco:** manual com `supabase db push` (sempre verificar com `db diff` antes)
+- **Edge Functions:** manual com `supabase functions deploy`
+- **CORS em produção:** trocar `'*'` pelo domínio Netlify exato
 
-## Regras Especiais deste Projeto
-[Liste aqui regras específicas do seu projeto]
+## TypeScript — Regras Estritas
+- `"strict": true` no tsconfig.json — obrigatório
+- Zero `any` — sempre tipar corretamente
+- Zero `@ts-ignore` — resolver o problema, não esconder
+- Zero `as unknown as X` — evidência de design errado
+- Preferir `interface` sobre `type` para objetos
+
+## Regras Específicas deste Projeto
+> [Adicione regras específicas do seu projeto]
 - [regra 1]
 - [regra 2]
 
 ## O que NÃO fazer
-- Nunca editar arquivos em `components/ui/` (shadcn gerencia)
-- Nunca colocar segredos no código frontend
-- Nunca fazer `select('*')` no Supabase
-- Nunca deixar tabela sem RLS habilitado
+- Editar arquivos em `components/ui/` (shadcn gerencia)
+- Usar `service_role_key` no frontend
+- Fazer `select('*')` no Supabase
+- Criar tabela sem RLS habilitado
+- Implementar sem Diff Plan aprovado
+- Calcular valores financeiros no browser
 ```
 
 ---
 
 ## Passo 5 — Como usar o Lovable com qualidade
 
-### Fluxo correto (não pule etapas)
+### A ordem correta (não pule etapas)
 
 ```
 Fase 1 → Layout e navegação (sem banco de dados)
+         "Crie a estrutura de páginas com menu lateral"
+
 Fase 2 → Componentes com dados falsos
-Fase 3 → Conectar Supabase (só quando o visual estiver bom)
-Fase 4 → Login e permissões de usuário
+         "Adicione uma tabela com 3 linhas de exemplo"
+
+Fase 3 → Conectar Supabase (só quando o visual estiver definido)
+         "Conecte ao Supabase e substitua os dados falsos pelos reais"
+
+Fase 4 → Login e permissões
+         "Adicione autenticação com email e senha"
+
 Fase 5 → Lógica complexa e Edge Functions
+         "Crie uma Edge Function para processar pagamentos"
 ```
 
-> **Por que essa ordem?** Mexer no banco antes do visual estar definido gera retrabalho. Primeiro decida como vai parecer, depois conecte os dados reais.
+> **Por que essa ordem?** Mexer no banco antes de definir o visual gera retrabalho constante. Defina o que vai aparecer, depois conecte os dados.
 
-### Como escrever prompts que funcionam
+### Prompts que funcionam — copie e adapte
 
-**Estrutura de prompt que funciona:**
-
+**Iniciar o projeto:**
 ```
-Contexto: [onde estamos no projeto]
-Objetivo: [o que precisa ser feito]
-Restrições: [o que não pode mudar]
-Critério de sucesso: [como saber que funcionou]
-```
+Antes de qualquer ação, leia os arquivos PROJECT_REQUIREMENTS.md, 
+AGENTS.md e CLAUDE.md do projeto.
 
-### Prompts prontos — copie e adapte
+Após ler, me apresente:
+1. Sua compreensão do projeto (resumo em 5 linhas)
+2. As 3 primeiras telas que propõe criar
+3. Alguma dúvida antes de começar
 
-**Para criar uma tela nova:**
-```
-Contexto: Estou construindo [nome do projeto]. Leia o PROJECT_REQUIREMENTS.md 
-e o AGENTS.md antes de começar.
-
-Objetivo: Criar a tela de [nome da tela] que permite ao usuário [o que faz].
-
-Esta tela deve ter:
-- [elemento 1]
-- [elemento 2]
-- [elemento 3]
-
-Restrições:
-- Máximo 300 linhas por componente
-- Loading skeleton obrigatório
-- Estado de erro com botão de tentar novamente
-- Sem dados hardcoded — tudo virá do Supabase depois
-
-Antes de implementar, me mostre o plano de arquivos que serão criados/alterados.
+Aguarde minha aprovação antes de escrever código.
 ```
 
-**Para conectar ao banco de dados:**
+**Criar tela nova:**
 ```
-Contexto: A tela de [nome] está pronta visualmente.
+Assuma o papel de @dev.
 
-Objetivo: Conectar ao Supabase. Preciso que:
-1. Crie a tabela `[nome]` com os campos: [liste os campos]
-2. Habilite RLS com as seguintes políticas:
-   - [perfil admin] pode fazer tudo
-   - [perfil operador] pode ler e inserir, nunca excluir
-3. Crie o hook `use[Nome]` usando TanStack Query
-4. Conecte o hook ao componente existente
+Objetivo: Criar a tela de [nome] que permite [o que faz].
 
-Antes de implementar, mostre o plano.
+Ela deve ter:
+- [elemento 1 com comportamento esperado]
+- [elemento 2 com comportamento esperado]
+- Loading skeleton enquanto carrega
+- Mensagem de erro com botão "Tentar novamente"
+- Mensagem amigável quando não há dados
+
+Máximo 300 linhas por componente.
+Primeiro me mostre o Diff Plan (quais arquivos serão criados/alterados).
+Aguarde minha aprovação antes de implementar.
 ```
 
-**Para adicionar login:**
+**Conectar ao banco de dados:**
 ```
-Contexto: O sistema [nome] precisa de autenticação.
+Assuma o papel de @data-engineer e depois @dev.
 
-Objetivo: Implementar login e controle de acesso com Supabase Auth.
+Objetivo: Persistir os dados da tela de [nome] no Supabase.
 
-Perfis existentes:
-- [perfil 1]: [o que pode]
-- [perfil 2]: [o que pode]
+@data-engineer deve:
+1. Criar a tabela `[nome]` com os campos: [liste com tipo de cada um]
+2. Habilitar RLS com políticas:
+   - admin: acesso total
+   - [perfil]: pode [o que pode]
+3. Criar índices para os campos usados em filtros
+
+@dev deve:
+4. Criar o hook `use[Nome]` com TanStack Query
+5. Substituir os dados falsos pelos dados reais do Supabase
+
+Primeiro mostre o plano completo. Aguarde aprovação.
+```
+
+**Adicionar login:**
+```
+Assuma o papel de @dev.
+
+Objetivo: Implementar autenticação com Supabase Auth.
+
+Perfis que existem:
+[cole os perfis do PROJECT_REQUIREMENTS]
 
 Preciso de:
 1. Tela de login com email e senha
-2. Rota protegida (redireciona para login se não autenticado)
-3. Logout
-4. Exibir nome do usuário no header
+2. Rota protegida (redireciona para /login se não autenticado)
+3. Logout no header
+4. Nome do usuário exibido após login
+5. Usuário com papel errado vê página "sem permissão"
 
-Antes de implementar, mostre o plano.
+Siga o padrão do AGENTS.md para ProtectedRoute.
+Primeiro mostre o Diff Plan.
 ```
 
-**Para corrigir um bug:**
+**Corrigir um bug:**
 ```
-Contexto: Na tela de [nome], ao [fazer X], acontece [Y] em vez de [Z esperado].
+Na tela de [nome], ao [fazer X], acontece [Y] em vez de [Z esperado].
 
-Antes de corrigir:
+@dev, antes de corrigir:
 1. Explique sua hipótese sobre a causa raiz
-2. Mostre quais arquivos pretende alterar
-3. Aguarde minha aprovação
+2. Liste os arquivos que pretende alterar
+3. Confirme que não vai alterar comportamentos que já funcionam
 
-Não altere comportamentos que já funcionam.
+Aguarde minha aprovação antes de fazer qualquer alteração.
 ```
 
-**Para criar uma Edge Function (lógica segura no servidor):**
+**Validar antes de publicar:**
 ```
-Contexto: Preciso de uma Edge Function no Supabase para [o que faz].
+@qa, faça a validação completa da tela de [nome].
 
-Esta função deve:
-- Receber: [campos do input]
-- Validar com Zod: [campos obrigatórios e tipos]
-- Verificar JWT do usuário autenticado
-- Verificar que o usuário tem papel: [perfil necessário]
-- Executar: [lógica de negócio]
-- Retornar: [o que retorna no sucesso]
-- Retornar erro padronizado em caso de falha
+Verifique:
+1. Cada critério de aceite da story
+2. Loading, error e empty states
+3. Responsivo no mobile
+4. Segurança: RLS habilitado nas tabelas
+5. Código: TypeScript limpo, sem any, componentes ≤ 300 linhas
 
-Siga o template seguro de Edge Function do AGENTS.md.
-Antes de implementar, mostre o plano.
+Emita o gate: PASS, CONCERNS ou FAIL.
 ```
 
 ---
 
-## Passo 6 — Segurança (a IA deve aplicar automaticamente)
+## Passo 6 — Segurança automática
 
-Estes padrões devem estar nos seus arquivos `AGENTS.md` e `CLAUDE.md`. A IA os aplicará automaticamente.
+Estes padrões estão no AGENTS.md e CLAUDE.md. A IA os aplica automaticamente. Mas é bom você entender o que está acontecendo.
 
-### Toda tabela criada deve ter:
+### Por que RLS?
 
+Sem RLS, qualquer usuário logado pode acessar todos os dados de todos os outros usuários do banco. É como uma planilha compartilhada onde todos veem tudo.
+
+Com RLS, o banco controla quem vê o quê — independente do que o código frontend faz.
+
+**Regra:** Toda tabela criada deve ter:
 ```sql
--- Habilitar segurança por linha
 ALTER TABLE nome_tabela ENABLE ROW LEVEL SECURITY;
 ALTER TABLE nome_tabela FORCE ROW LEVEL SECURITY;
-
--- Quem pode ler
-CREATE POLICY "leitura_autenticados" ON nome_tabela
-  FOR SELECT TO authenticated
-  USING (auth.jwt() ->> 'user_role' IN ('admin', 'operador'));
-
--- Quem pode criar registros
-CREATE POLICY "inserir_operador" ON nome_tabela
-  FOR INSERT TO authenticated
-  WITH CHECK (auth.jwt() ->> 'user_role' IN ('admin', 'operador'));
-
--- Quem pode excluir (geralmente só admin)
-CREATE POLICY "excluir_admin" ON nome_tabela
-  FOR DELETE TO authenticated
-  USING (auth.jwt() ->> 'user_role' = 'admin');
 ```
 
-### Template de Edge Function segura:
+### Por que Edge Functions para lógica crítica?
+
+Cálculos feitos no browser (JavaScript do usuário) podem ser manipulados. Um usuário mal-intencionado pode editar o código no navegador e alterar um desconto de 10% para 100%.
+
+Edge Functions rodam no servidor da Supabase — o usuário não tem acesso. Use para:
+- Cálculos financeiros
+- Processamento de pagamentos
+- Operações que dependem de dados que o usuário não pode ver
+
+### Template de Edge Function segura
 
 ```typescript
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts";
+// supabase/functions/[nome-da-funcao]/index.ts
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
+import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts"
 
+// Em produção: trocar '*' pelo domínio Netlify exato
 const corsHeaders = {
-  'Access-Control-Allow-Origin': 'https://seu-site.netlify.app',
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+}
 
-// Defina o que a função aceita como entrada
+// Definir o que a função aceita — qualquer outra coisa é rejeitada
 const InputSchema = z.object({
   id: z.string().uuid(),
-  // adicione outros campos aqui
-});
+  // adicione campos conforme necessário
+})
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders, status: 204 });
+    return new Response('ok', { headers: corsHeaders, status: 204 })
   }
 
-  const reqId = crypto.randomUUID().slice(0, 8);
+  const reqId = crypto.randomUUID().slice(0, 8) // para rastreabilidade nos logs
 
   try {
-    // 1. Verificar que o usuário está logado
-    const token = req.headers.get('Authorization')?.replace('Bearer ', '');
-    if (!token) return erro(401, 'Não autorizado', reqId);
+    // 1. Verificar que o usuário está logado (NUNCA confiar no body)
+    const token = req.headers.get('Authorization')?.replace('Bearer ', '')
+    if (!token) return erro(401, 'Não autorizado', reqId, corsHeaders)
 
     const supaUser = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_ANON_KEY')!,
       { global: { headers: { Authorization: `Bearer ${token}` } } }
-    );
-    const { data: { user }, error: authErr } = await supaUser.auth.getUser();
-    if (authErr || !user) return erro(401, 'Token inválido', reqId);
+    )
+    const { data: { user }, error: authErr } = await supaUser.auth.getUser()
+    if (authErr || !user) return erro(401, 'Token inválido', reqId, corsHeaders)
 
-    // 2. Verificar perfil do usuário
-    const userRole = user.user_metadata?.user_role;
+    // 2. Verificar papel do usuário
+    const userRole = user.user_metadata?.user_role
     if (!['admin', 'operador'].includes(userRole ?? '')) {
-      return erro(403, 'Sem permissão', reqId);
+      return erro(403, 'Sem permissão para esta operação', reqId, corsHeaders)
     }
 
-    // 3. Validar o que foi enviado
-    const input = InputSchema.parse(await req.json());
+    // 3. Validar o que foi enviado (Zod rejeita dados malformados)
+    const input = InputSchema.parse(await req.json())
 
-    // 4. Sua lógica aqui (usando supaAdmin para operações privilegiadas)
+    // 4. Buscar dados do banco — NUNCA usar valores enviados pelo usuário
     const supaAdmin = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-    );
+    )
+    const { data: registro, error: dbErr } = await supaAdmin
+      .from('tabela')
+      .select('valor_real')
+      .eq('id', input.id)
+      .single()
 
-    // ... lógica de negócio ...
+    if (dbErr || !registro) return erro(404, 'Registro não encontrado', reqId, corsHeaders)
 
-    // 5. Retornar resultado
+    // 5. Sua lógica aqui usando registro.valor_real (do banco, confiável)
+    const resultado = registro.valor_real * 0.9 // exemplo de cálculo seguro
+
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, resultado }),
       { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-    );
+    )
 
   } catch (e) {
     if (e instanceof z.ZodError) {
       return new Response(
-        JSON.stringify({ title: 'Dados inválidos', errors: e.errors, reqId }),
+        JSON.stringify({ titulo: 'Dados inválidos', erros: e.errors, reqId }),
         { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      );
+      )
     }
-    console.error(`[${reqId}] Erro:`, e);
-    return erro(500, 'Erro interno', reqId);
+    console.error(`[${reqId}] Erro inesperado:`, e)
+    return erro(500, 'Erro interno', reqId, corsHeaders)
   }
-});
+})
 
-function erro(status: number, detail: string, reqId: string): Response {
+function erro(status: number, detalhe: string, reqId: string, headers: Record<string, string>): Response {
   return new Response(
-    JSON.stringify({ status, detail, reqId }),
-    { status, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-  );
+    JSON.stringify({ status, detalhe, reqId }),
+    { status, headers: { 'Content-Type': 'application/json', ...headers } }
+  )
 }
 ```
 
 ---
 
-## Passo 7 — Checklist antes de considerar algo pronto
+## Passo 7 — Definition of Done (checklist antes de publicar)
 
-A IA deve usar este checklist automaticamente. Você pode pedir: *"faça o checklist de Definition of Done antes de concluir"*.
+Peça para a IA executar este checklist antes de considerar qualquer coisa pronta:
+
+```
+@qa, execute o Definition of Done completo para a feature de [nome].
+Emita PASS só se todos os itens estiverem verificados.
+```
 
 ### Código
-- [ ] Build passa sem erros (`npm run build`)
-- [ ] Sem `any` no TypeScript
-- [ ] Sem `console.log` esquecido
+- [ ] `npm run build` passa sem erros
+- [ ] TypeScript: zero `any`, zero `@ts-ignore`
+- [ ] Sem `console.log` em produção
 - [ ] Nenhum componente com mais de 300 linhas
 
 ### Dados
-- [ ] TanStack Query para buscar dados (sem useEffect para dados remotos)
-- [ ] Campos específicos no select (nunca `select('*')`)
-- [ ] Listas grandes com paginação ou virtualização
+- [ ] TanStack Query para dados remotos
+- [ ] `.select('campo1, campo2')` — sem `select('*')`
+- [ ] Listas grandes com paginação
 
 ### Visual
-- [ ] Loading com skeleton (não spinner genérico)
+- [ ] Loading com skeleton (não spinner simples)
 - [ ] Estado de erro com botão "Tentar novamente"
-- [ ] Estado vazio (quando não há dados)
+- [ ] Estado vazio com mensagem amigável
 - [ ] Funciona em celular (responsivo)
+- [ ] Formulários com validação em tempo real (não só no submit)
 
 ### Segurança
-- [ ] Toda tabela nova com RLS habilitado
+- [ ] Tabelas novas: RLS + FORCE habilitados
 - [ ] Políticas definidas por perfil de usuário
 - [ ] Nenhum segredo no código frontend
-- [ ] Valores financeiros calculados no servidor
+- [ ] Lógica crítica em Edge Function (não no browser)
+- [ ] Input validado com Zod nas Edge Functions
 
 ### Documentação
 - [ ] PROJECT_REQUIREMENTS.md atualizado
-- [ ] Mudanças importantes registradas
+- [ ] Decisões importantes registradas
 
 ### Testes manuais
-- [ ] Caminho normal funciona
-- [ ] O que acontece com internet lenta? (loading aparece)
-- [ ] O que acontece com erro? (mensagem de erro aparece)
-- [ ] O que acontece sem dados? (tela vazia aparece)
+- [ ] Caminho normal funciona do início ao fim
+- [ ] Erro de conexão: mensagem aparece corretamente
+- [ ] Sem dados: empty state aparece
+- [ ] Usuário sem permissão: acesso negado funciona
 
 ---
 
-## Passo 8 — Como organizar tarefas (Stories)
+## Passo 8 — Como organizar as tarefas (Stories)
 
-Uma "story" é uma unidade de trabalho. Cada funcionalidade nova deve ser uma story. Copie e use este modelo:
+Cada funcionalidade nova é uma story. Salve em `docs/stories/STORY-XXX.md`.
 
 ```markdown
 # STORY-001 — [Título da funcionalidade]
 
 **Status:** backlog | em-progresso | em-review | concluido
-**Módulo:** [nome do módulo]
+**Módulo:** [qual módulo]
 **Prioridade:** alta | média | baixa
 
 ## Contexto
-[Por que essa funcionalidade é necessária? Que problema resolve?]
+[Por que essa funcionalidade existe? Que problema do usuário resolve?]
 
-## O que precisa funcionar (Critérios de Aceite)
-- CA1: Ao clicar em [X], deve acontecer [Y]
-- CA2: Se [situação], então [resultado esperado]
-- CA3: O usuário com perfil [X] deve [ver/não ver] este recurso
+## Critérios de Aceite
+> Cada item deve ser verificável: ou funciona ou não funciona.
 
-## Especificações Técnicas
-[A IA preenche esta seção ao fazer o plano]
+- CA1: Dado [situação], quando [usuário faz X], então [resultado Y acontece]
+- CA2: Usuário com perfil [X] [vê / não vê] [elemento]
+- CA3: [descreva comportamento testável]
 
-## Resultado da Implementação
-[A IA preenche com o que foi feito]
+## Diff Plan (preenchido pelo @dev)
+Arquivos criados:
+- [lista]
 
-## QA — Resultado dos Testes
-Gate: PASS / CONCERNS / FAIL
+Arquivos modificados:
+- [lista]
+
+## QA (preenchido pelo @qa)
 - CA1: ✅ / ❌
 - CA2: ✅ / ❌
 - CA3: ✅ / ❌
+
+Gate: PASS / CONCERNS / FAIL
+Observações: [se houver]
 ```
 
 ---
 
-## Como iniciar um projeto do zero — Roteiro completo
+## Roteiro completo para iniciar um projeto
 
-Siga esta ordem. Não pule etapas.
+```
+□ 1. Refinar ideia com Claude/ChatGPT (30-60 min)
+□ 2. Criar conta em: GitHub, Supabase, Netlify, Lovable
+□ 3. Criar projeto no Supabase (região: São Paulo)
+□ 4. Criar repositório no GitHub
+□ 5. Criar projeto no Lovable + conectar ao GitHub
+□ 6. No Lovable, conectar ao projeto Supabase
+□ 7. Criar site no Netlify apontando para o repositório
+□ 8. Configurar variáveis de ambiente no Netlify:
+     VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY
+□ 9. Criar e preencher PROJECT_REQUIREMENTS.md
+□ 10. Copiar AGENTS.md e ajustar perfis de acesso
+□ 11. Copiar CLAUDE.md e ajustar informações do projeto
+□ 12. Fazer commit dos 3 arquivos no GitHub
+□ 13. No Lovable, usar o prompt de início de projeto
+□ 14. Criar primeira story com @sm
+□ 15. Implementar com @dev, validar com @qa, fazer push
+```
 
-### Preparação (15 minutos)
-1. Crie conta em: GitHub, Supabase, Netlify, Lovable
-2. Crie projeto no Supabase (escolha região: São Paulo)
-3. Crie projeto no Lovable e conecte ao GitHub
-4. No Lovable, conecte o projeto ao Supabase
-5. Crie site no Netlify apontando para o repositório GitHub
+---
 
-### Documentação (30 minutos — faça antes de programar)
-6. Copie e preencha o `PROJECT_REQUIREMENTS.md`
-7. Copie o `AGENTS.md` (ajuste apenas os perfis de usuário)
-8. Copie o `CLAUDE.md` (ajuste stack e regras específicas)
-9. Faça commit desses 3 arquivos no GitHub
+## Prompt de início rápido
 
-### Desenvolvimento
-10. No Lovable, use o prompt abaixo para começar:
+Use este prompt quando quiser que a IA comece a desenvolver após os documentos estarem prontos:
 
 ```
 Você vai desenvolver [nome do projeto].
 
 Antes de qualquer ação:
-1. Leia o PROJECT_REQUIREMENTS.md
-2. Leia o AGENTS.md
-3. Leia o CLAUDE.md
-
-Com base nisso, me mostre:
-a) Sua compreensão do projeto (resumo em 5 linhas)
-b) As 3 primeiras telas que você propõe criar
-c) A estrutura de pastas que vai usar
-
-Aguarde minha aprovação antes de começar a criar código.
-```
-
----
-
-## Prompt de início rápido — copie e use
-
-Quando quiser que a IA comece um projeto novo, cole este prompt (preenchendo as partes em colchetes):
-
-```
-Você vai me ajudar a desenvolver [descreva sua ideia em 2-3 frases].
-
-Antes de começar, leia os arquivos:
-- PROJECT_REQUIREMENTS.md
-- AGENTS.md  
-- CLAUDE.md
+1. Leia PROJECT_REQUIREMENTS.md
+2. Leia AGENTS.md
+3. Leia CLAUDE.md
 
 Após ler, me apresente:
-1. Sua compreensão do projeto (o que vai fazer, para quem, principais funcionalidades)
-2. As primeiras 3 telas que propõe criar no MVP
-3. Quais tabelas no banco de dados serão necessárias
-4. Alguma dúvida que você tem antes de começar
+1. Resumo do que você entendeu (5 linhas)
+2. Quais tabelas do banco serão necessárias para o MVP
+3. As 3 primeiras telas que propõe criar
+4. Dúvidas que precisa resolver antes de começar
 
-Aguarde minha resposta antes de escrever qualquer código.
+Não escreva código ainda. Aguarde minha resposta.
 ```
 
 ---
@@ -677,26 +893,24 @@ Aguarde minha resposta antes de escrever qualquer código.
 ## Perguntas frequentes
 
 **Preciso saber programar?**
-Não. Você precisa saber explicar sua ideia com clareza. Quanto mais detalhado você for nos documentos, melhor a IA vai trabalhar.
-
-**Quanto custa?**
-Supabase, Netlify e GitHub têm planos gratuitos generosos para projetos pequenos e médios. Lovable tem plano pago para mais uso.
+Não. Você precisa saber descrever o que quer com clareza. Quanto mais detalhado, melhor a IA entrega.
 
 **E se a IA errar?**
-Diga o que está errado e peça para ela corrigir. Use o prompt de bug da seção de Lovable. Sempre peça o plano antes de implementar.
+Diga o que está errado e use o prompt de bug. Sempre peça o plano antes de implementar — isso evita a maioria dos erros.
 
-**Posso usar outro banco de dados?**
-Pode, mas Supabase já vem com login de usuários, segurança por linha (RLS), banco de dados e API prontos. Para projetos novos, é a escolha mais rápida.
+**Posso mudar de ideia no meio do projeto?**
+Sim, mas atualize o PROJECT_REQUIREMENTS antes de pedir a mudança. A IA vai trabalhar com base no documento mais recente.
 
-**Preciso de um desenvolvedor humano?**
-Para projetos simples, não. Para projetos grandes com integrações complexas, um dev pode ajudar a revisar a arquitetura.
+**Como sei que o sistema está seguro?**
+Peça `@security faça o security review` antes de qualquer publicação importante. O checklist de segurança cobre os principais riscos.
+
+**Quanto custa?**
+Supabase, Netlify e GitHub têm planos gratuitos para projetos pequenos e médios. Lovable tem plano pago para mais uso. Claude Code requer assinatura Claude Pro.
 
 ---
 
-## Recursos
+## Próximos passos
 
-- [Supabase — Documentação](https://supabase.com/docs)
-- [Netlify — Começar](https://docs.netlify.com)
-- [Lovable — Guia](https://docs.lovable.dev)
-- [shadcn/ui — Componentes](https://ui.shadcn.com)
-- [TanStack Query](https://tanstack.com/query/latest)
+- [Refinamento de Ideia com IA](/refinamento-de-ideia) — como transformar sua ideia em especificação
+- [Guia Claude Code + Supabase](/guia-claude-code) — desenvolvimento sem Lovable
+- [Agentes Especializados](/agentes-especializados) — referência completa de cada agente

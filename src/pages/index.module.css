@@ -69,7 +69,7 @@
 
 .sidebarLink:hover {
   background: #0d1526;
-  color: #00D4FF;
+  color: #FF5C3A;
   text-decoration: none;
 }
 
@@ -133,7 +133,7 @@
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00D4FF;
+  color: #FF5C3A;
   margin-bottom: 20px;
   opacity: 0.85;
 }
@@ -147,7 +147,7 @@
 }
 
 .accent {
-  color: #00D4FF;
+  color: #FF5C3A;
 }
 
 .heroSub {
@@ -160,7 +160,7 @@
 
 .ctaBtn {
   display: inline-block;
-  background: #00D4FF;
+  background: #FF5C3A;
   color: #050816;
   font-weight: 700;
   font-size: 1rem;
@@ -197,7 +197,7 @@
   transform: translateX(-50%);
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.11) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 92, 58, 0.11) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -252,13 +252,13 @@
 }
 
 .pillarCard:hover {
-  border-color: #00D4FF44;
+  border-color: #FF5C3A44;
   transform: translateY(-4px);
 }
 
 .pillarIcon {
   font-size: 1.8rem;
-  color: #00D4FF;
+  color: #FF5C3A;
   display: block;
   margin-bottom: 14px;
 }
@@ -293,7 +293,7 @@
 }
 
 .diffQuote em {
-  color: #00D4FF;
+  color: #FF5C3A;
   font-style: normal;
 }
 
@@ -320,7 +320,7 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: #00D4FF;
+  color: #FF5C3A;
 }
 
 /* ── Phases ── */
@@ -340,7 +340,7 @@
 .phaseNumber {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #00D4FF14;
+  color: #FF5C3A14;
   display: block;
   line-height: 1;
   margin-bottom: 8px;
@@ -350,7 +350,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #00D4FF;
+  color: #FF5C3A;
   margin-bottom: 8px;
   opacity: 0.8;
 }

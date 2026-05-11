@@ -34,18 +34,15 @@ const sidebarLinks = [
     category: 'Guias',
     links: [
       { label: 'Desenvolvimento com IA', to: '/guia-desenvolvimento-ia' },
+      { label: 'Refinamento de Ideia com IA', to: '/refinamento-de-ideia' },
+      { label: 'Guia Claude Code + Supabase', to: '/guia-claude-code' },
     ],
   },
   {
-    category: 'Frameworks',
+    category: 'Referência',
     links: [
+      { label: 'Agentes Especializados', to: '/agentes-especializados' },
       { label: 'Framework OpenClaw Multi-Agente', to: '/framework-openclaw-multi-agente' },
-    ],
-  },
-  {
-    category: 'Relatórios',
-    links: [
-      { label: 'Relatório G4 Sprint de IA', to: '/G4-Sprint-de-IA' },
     ],
   },
 ];

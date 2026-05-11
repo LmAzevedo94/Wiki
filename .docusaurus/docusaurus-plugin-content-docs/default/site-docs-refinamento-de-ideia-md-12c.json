@@ -1,0 +1,27 @@
+{
+  "id": "refinamento-de-ideia",
+  "title": "Refinamento de Ideia com IA",
+  "description": "Antes de escrever uma linha de código, você precisa transformar sua ideia vaga em uma especificação clara. Este guia ensina a usar Claude ou ChatGPT para fazer isso — e sair com o PROJECT_REQUIREMENTS pronto para a IA desenvolver.",
+  "source": "@site/docs/refinamento-de-ideia.md",
+  "sourceDirName": ".",
+  "slug": "/refinamento-de-ideia",
+  "permalink": "/Wiki/refinamento-de-ideia",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "refinamento-de-ideia",
+    "title": "Refinamento de Ideia com IA",
+    "sidebar_label": "Refinamento de Ideia com IA"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Guia de Desenvolvimento com IA",
+    "permalink": "/Wiki/guia-desenvolvimento-ia"
+  },
+  "next": {
+    "title": "Claude Code + Supabase",
+    "permalink": "/Wiki/guia-claude-code"
+  }
+}

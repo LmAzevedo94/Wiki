@@ -1,8 +1,17 @@
 :root {
-  --ifm-color-primary: #00D4FF;
+  --ifm-color-primary: #FF5C3A;
+  --ifm-color-primary-dark: #ff4520;
+  --ifm-color-primary-darker: #ff3912;
+  --ifm-color-primary-darkest: #de2900;
+  --ifm-color-primary-light: #ff7354;
+  --ifm-color-primary-lighter: #ff8062;
+  --ifm-color-primary-lightest: #ffa68e;
   --ifm-background-color: #050816;
+  --trivia-coral: #FF5C3A;
+  --trivia-coral-glow: rgba(255, 92, 58, 0.15);
 }
 
 html[data-theme='dark'] {
+  --ifm-color-primary: #FF5C3A;
   --ifm-background-color: #050816;
 }

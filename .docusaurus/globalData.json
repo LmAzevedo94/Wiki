@@ -1,0 +1,57 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/Wiki/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/Wiki/",
+          "mainDocId": "guia-desenvolvimento-ia",
+          "docs": [
+            {
+              "id": "agentes-especializados",
+              "path": "/Wiki/agentes-especializados",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "framework-openclaw-multi-agente",
+              "path": "/Wiki/framework-openclaw-multi-agente",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "G4-Sprint-de-IA",
+              "path": "/Wiki/G4-Sprint-de-IA"
+            },
+            {
+              "id": "guia-claude-code",
+              "path": "/Wiki/guia-claude-code",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "guia-desenvolvimento-ia",
+              "path": "/Wiki/guia-desenvolvimento-ia",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "refinamento-de-ideia",
+              "path": "/Wiki/refinamento-de-ideia",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/Wiki/guia-desenvolvimento-ia",
+                "label": "guia-desenvolvimento-ia"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
